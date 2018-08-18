@@ -27,7 +27,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Video src={this.state.stream && this.state.stream.getVideoTracks()} style={{ width: '500px', height: '500px', background: 'black', maxWidth: '100%' }} autoplay={false} controls />
+        <Video src={this.state.stream && this.state.stream.getVideoTracks()} style={{ width: '500px', height: '500px', background: 'black', maxWidth: '100%' }} playsinline autoplay muted />
         <button onClick={this.startVideo}>Start Video</button>
       </div>
     );

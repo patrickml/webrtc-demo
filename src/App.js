@@ -6,20 +6,19 @@ import Video from 'Components/Video';
 
 class App extends Component {
   state = {
-    stream: null,
     streamURL: null,
   };
 
    startVideo = async () => {
     try {
       const stream = await startVideoStream({ audio: false, video: { facingMode: "user" } });
-      this.setState({
-        stream,
-        streamURL: window.URL.createObjectURL(stream),
-      });
+      this.stream = stream;
       this.video.srcObject = stream;
     } catch(e) {
       alert(e);
+      this.setState({
+        streamURL: window.URL.createObjectURL(stream),
+      });
     }
   };
 

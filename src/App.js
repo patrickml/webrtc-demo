@@ -6,7 +6,7 @@ import Video from 'Components/Video';
 
 class App extends Component {
   state = {
-    streamURL: null,
+    streamURL: undefined,
   };
 
    startVideo = async () => {
@@ -28,7 +28,7 @@ class App extends Component {
       <div className="App">
         <Video 
           src={this.state.streamURL} 
-          style={{ width: '500px', height: '500px', background: 'black', maxWidth: '100%' }} 
+          style={{ width: '500px', height: '500px', maxWidth: '100%' }} 
           playsInline 
           autoPlay 
           ref={(ref) => {

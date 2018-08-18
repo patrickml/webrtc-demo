@@ -11,7 +11,7 @@ class App extends Component {
 
    startVideo = async () => {
     try {
-      const stream = await startVideoStream({ audio: true, video: { facingMode: "user" } });
+      const stream = await startVideoStream({ audio: false, video: { facingMode: "user" } });
       this.setState({
         stream,
       });

@@ -7,6 +7,7 @@ import Video from 'Components/Video';
 class App extends Component {
   state = {
     stream: null,
+    streamURL: null,
   };
 
    startVideo = async () => {
@@ -14,7 +15,9 @@ class App extends Component {
       const stream = await startVideoStream({ audio: false, video: { facingMode: "user" } });
       this.setState({
         stream,
+        streamURL: window.URL.createObjectURL(stream),
       });
+      this.video.srcObject = stream;
     } catch(e) {
       alert(e);
     }
@@ -27,7 +30,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Video src={this.state.stream} style={{ width: '500px', height: '500px', background: 'black', maxWidth: '100%' }} playsinline autoplay muted />
+        <Video 
+          src={this.state.streamURL} 
+          style={{ width: '500px', height: '500px', background: 'black', maxWidth: '100%' }} 
+          playsInline 
+          autoPlay 
+          ref={(ref) => {
+            this.video = ref;
+          }}
+        />
         <button onClick={this.startVideo}>Start Video</button>
       </div>
     );

@@ -16,9 +16,6 @@ class App extends Component {
       this.video.srcObject = stream;
     } catch(e) {
       alert(e);
-      this.setState({
-        streamURL: window.URL.createObjectURL(stream),
-      });
     }
   };
 
